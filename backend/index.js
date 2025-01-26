@@ -7,8 +7,10 @@ require('dotenv').config();
 
 app.use(cors(
   {
-    origin: process.env.ORIGIN_URL,
-    credentials: true
+  origin: 'https://ats-fbe8.vercel.app', 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], 
+  credentials: true 
+
   }
 ));
 app.use(fileUpload());

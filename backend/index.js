@@ -5,7 +5,11 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 
-app.use(cors());
+app.use(cors(
+  {
+    origin: process.env.ORIGIN_URL
+  }
+));
 app.use(fileUpload());
 
 app.get('/', (req, res) => {

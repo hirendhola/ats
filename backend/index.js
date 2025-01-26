@@ -7,7 +7,7 @@ require('dotenv').config();
 
 app.use(cors(
   {
-  origin: 'ats.hirenx.in', 
+  origin: 'https://ats.hirenx.in', 
   methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 ));

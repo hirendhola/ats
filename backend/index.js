@@ -13,6 +13,10 @@ app.use(cors(
 ));
 app.use(fileUpload());
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 app.post('/upload', (req, res) => {
   const { file } = req.files;
   const buffer = file.data;

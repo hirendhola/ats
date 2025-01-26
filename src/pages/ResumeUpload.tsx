@@ -45,17 +45,21 @@ export const ResumeUpload: React.FC = () => {
 
       const formData = new FormData();
       formData.append("file", file);
-      const response = await fetch(import.meta.env.BACKEND_URL, {
-        method: "POST",
-        body: formData,
-      });
+      console.log(import.meta.env.BACKEND_URL);
+      const response = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to upload the file");
       }
 
       const fileContent = await response.text();
 
-      console.log("File Content:", fileContent);
+      // console.log("File Content:", fileContent);
       const maxAttempts = 1;
 
       let attempts = 0;

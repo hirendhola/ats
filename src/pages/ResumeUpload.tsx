@@ -3,12 +3,7 @@
 import React, { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useDropzone } from "react-dropzone";
-import {
-  FiUpload,
-  FiFile,
-  FiX,
-  FiAlertCircle,
-} from "react-icons/fi";
+import { FiUpload, FiFile, FiX, FiAlertCircle } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { theme } from "@/theme/theme";
 // import { analyzeResumeWithOpenAI } from "@/api/openai";
@@ -50,7 +45,7 @@ export const ResumeUpload: React.FC = () => {
 
       const formData = new FormData();
       formData.append("file", file);
-      const response = await fetch("http://localhost:3000/upload", {
+      const response = await fetch(import.meta.env.BACKEND_URL, {
         method: "POST",
         body: formData,
       });

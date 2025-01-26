@@ -7,7 +7,7 @@ require('dotenv').config();
 
 app.use(cors(
   {
-    origin: 'https://ats-umber.vercel.app',
+    origin: process.env.ORIGIN_URL,
     credentials: true
   }
 ));

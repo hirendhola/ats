@@ -7,7 +7,7 @@ require('dotenv').config();
 
 app.use(cors(
   {
-  origin: 'https://ats-fbe8.vercel.app', 
+  origin: 'ats.hirenx.in', 
   methods: ['GET', 'POST', 'PUT', 'DELETE']
   }
 ));

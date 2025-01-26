@@ -7,7 +7,7 @@ require('dotenv').config();
 
 app.use(cors(
   {
-    origin: '', 
+    origin: 'https://ats-umber.vercel.app',
     credentials: true
   }
 ));
@@ -22,7 +22,7 @@ app.post('/upload', (req, res) => {
   const buffer = file.data;
 
   pdfParser(buffer).then((data) => {
-    res.send(data.text);
+    res.status(200).send(data.text);
   });
 });
 

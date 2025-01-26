@@ -9,6 +9,7 @@ import { theme } from "@/theme/theme";
 // import { analyzeResumeWithOpenAI } from "@/api/openai";
 import { analyzeResumeWithGemini } from "@/api/gemini";
 import { useNavigate } from "react-router";
+import axios from "axios";
 interface AnalysisResult {
   content: string;
   error?: string;
@@ -46,18 +47,21 @@ export const ResumeUpload: React.FC = () => {
       const formData = new FormData();
       formData.append("file", file);
       console.log(import.meta.env.BACKEND_URL);
-      const response = await fetch(
+      const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/upload`,
+        formData,
         {
-          method: "POST",
-          body: formData,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
         }
       );
-      if (!response.ok) {
+
+      if (response.status !== 200) {
         throw new Error("Failed to upload the file");
       }
 
-      const fileContent = await response.text();
+      const fileContent = response.data;
 
       // console.log("File Content:", fileContent);
       const maxAttempts = 1;
